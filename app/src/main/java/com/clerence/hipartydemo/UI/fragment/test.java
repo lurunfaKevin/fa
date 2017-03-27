@@ -5,4 +5,6 @@ package com.clerence.hipartydemo.UI.fragment;
  */
 public class test {
     private String tesrt11;
+    private String tesrt13;
+    private String tesrt14;
 }
