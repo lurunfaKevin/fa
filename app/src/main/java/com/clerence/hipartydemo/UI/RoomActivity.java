@@ -97,6 +97,11 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
                 if (mPopFragment == null) {
                     showPop();
                 }
+            }else if(msg.what == Constant.Order.ensure_introduce.getIndex()){
+                Bundle bundle = (Bundle) msg.obj;
+                Chater chater = (Chater) bundle.getSerializable("chater");
+                Logger.d(chater.getOrder());
+                mRoomAdapter.addChater(chater);
             }
         }
     };
@@ -217,7 +222,7 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
         chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
         chater.setOrder(Constant.Order.ensure_introduce.name());
         Map<String,Object> map = new HashMap<>();
-        map.put(Constant.Order.introduce.name(),roomNum);
+        map.put(Constant.Order.ensure_introduce.name(),roomNum);
         chater.setObject(map);
         mBinder.sendMsg(Json2Chater.chater2Json(chater));
 
