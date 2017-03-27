@@ -137,7 +137,18 @@ public class RoomAdapter extends BaseAdapter {
                 Map<String, Object> map = (Map<String, Object>) chater.getObject();
                 String rankMessage = (String) map.get("punishment");
                 tvLeft.setText(rankMessage);
-            } else {
+            } else if (chater.getOrder().equals("ensure_introduce")) {
+                midLayout.setVisibility(View.GONE);
+                tvUser.setVisibility(View.GONE);
+                tvTime.setVisibility(View.GONE);
+
+                leftLayout.setVisibility(View.VISIBLE);
+                tvLeft.setVisibility(View.VISIBLE);
+                Logger.d("msg"+chater.getOrder());
+                Map<String, Object> map = (Map<String, Object>) chater.getObject();
+                String rankMessage = (String) map.get("introduce");//需要确认
+                tvLeft.setText(rankMessage);
+            }else {
                 midLayout.setVisibility(View.GONE);
                 tvUser.setVisibility(View.GONE);
                 tvTime.setVisibility(View.GONE);
