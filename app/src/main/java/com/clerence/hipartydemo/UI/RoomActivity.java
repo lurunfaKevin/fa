@@ -25,19 +25,23 @@ import com.clerence.hipartydemo.Bean.BeanLab;
 import com.clerence.hipartydemo.Bean.Chater;
 import com.clerence.hipartydemo.Bean.Constant;
 import com.clerence.hipartydemo.R;
+import com.clerence.hipartydemo.Service.JoinRoomInterface;
 import com.clerence.hipartydemo.Service.ShiftListener;
+import com.clerence.hipartydemo.UI.fragment.RoomPopFragment;
 import com.clerence.hipartydemo.Utils.Json2Chater;
 import com.clerence.hipartydemo.Utils.ShifListenerImpl;
 import com.orhanobut.logger.Logger;
 
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * RoomActivity     2017-03-24
  * Copyright (c) 2017 Kevin L. All Rights Reserved.
  */
 
-public class RoomActivity extends AppCompatActivity {
+public class RoomActivity extends AppCompatActivity implements JoinRoomInterface {
 
 
     private EditText mEditInput;
@@ -46,6 +50,7 @@ public class RoomActivity extends AppCompatActivity {
     private ListView mListView;
     private MinaService.MinaBinder mBinder;
     private RoomAdapter mRoomAdapter;
+    private RoomPopFragment mPopFragment;
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -70,24 +75,36 @@ public class RoomActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
 
-            if (msg.what == Constant.Order.talk.getIndex()){
+            if (msg.what == Constant.Order.talk.getIndex()) {
                 Bundle bundle = (Bundle) msg.obj;
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 mRoomAdapter.addChater(chater);
-            }else if(msg.what == Constant.Order.rank.getIndex()){
+            } else if (msg.what == Constant.Order.rank.getIndex()) {
 
                 Bundle bundle = (Bundle) msg.obj;
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 mRoomAdapter.addChater(chater);
                 Logger.d(chater.getOrder());
-            }else if (msg.what == Constant.Order.ensure_punishment.getIndex()){
+            } else if (msg.what == Constant.Order.ensure_punishment.getIndex()) {
                 Bundle bundle = (Bundle) msg.obj;
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 Logger.d(chater.getOrder());
                 mRoomAdapter.addChater(chater);
+            } else if (msg.what == Constant.Order.introduce.getIndex()) {
+                Bundle bundle = (Bundle) msg.obj;
+                Chater chater = (Chater) bundle.getSerializable("chater");
+                Logger.d(chater.getOrder());
+                if (mPopFragment == null) {
+                    showPop();
+                }
             }
         }
     };
+
+    private void showPop() {
+        mPopFragment = new RoomPopFragment();
+        mPopFragment.show(getSupportFragmentManager(), "room");
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -112,13 +129,13 @@ public class RoomActivity extends AppCompatActivity {
 //                TextView tv = (TextView) findViewById(R.id.room_tv_tip);
 //                tv.setText("网络异常，请重新加入房间");
 //            } else {
-                findViewById(R.id.room_framTip).setVisibility(View.GONE);
-                findViewById(R.id.room_lv_dialog).setVisibility(View.VISIBLE);
-                findViewById(R.id.room_frameBottom).setVisibility(View.VISIBLE);
-                String roomName = (String) BeanLab.getBeanLab().getFromMap("roomName");
-                String roomId = (String) BeanLab.getBeanLab().getFromMap("roomId");
-                mTVRoomName.setText(roomName+"("+roomId+")");
-                initSend();
+            findViewById(R.id.room_framTip).setVisibility(View.GONE);
+            findViewById(R.id.room_lv_dialog).setVisibility(View.VISIBLE);
+            findViewById(R.id.room_frameBottom).setVisibility(View.VISIBLE);
+            String roomName = (String) BeanLab.getBeanLab().getFromMap("roomName");
+            String roomId = (String) BeanLab.getBeanLab().getFromMap("roomId");
+            mTVRoomName.setText(roomName + "(" + roomId + ")");
+            initSend();
             //}
         }
 
@@ -131,9 +148,9 @@ public class RoomActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = mEditInput.getText().toString();
-                if (TextUtils.isEmpty(input)){
-                    Toast.makeText(RoomActivity.this,"消息不能为空",Toast.LENGTH_SHORT);
-                }else{
+                if (TextUtils.isEmpty(input)) {
+                    Toast.makeText(RoomActivity.this, "消息不能为空", Toast.LENGTH_SHORT);
+                } else {
                     Chater chater = new Chater();
                     chater.setOrder("talk");
                     chater.setUserId(BeanLab.getBeanLab().getUserId());
@@ -173,7 +190,7 @@ public class RoomActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        BeanLab.getBeanLab().setChaters(new ArrayList<Chater>());
     }
 
     private void initShiftButton() {
@@ -184,5 +201,25 @@ public class RoomActivity extends AppCompatActivity {
         //设置颜色高亮
         ImageView imageView = (ImageView) findViewById(R.id.shift_im_room);
         imageView.setImageResource(R.drawable.shift_room_check);
+    }
+
+    @Override
+    public void onFinish(String roomNum) {
+        if (TextUtils.isEmpty(roomNum)){
+            Toast.makeText(RoomActivity.this,"自我介绍内容为空",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (mPopFragment!=null){
+            mPopFragment = null;
+        }
+        Chater chater = new Chater();
+        chater.setUserId(BeanLab.getBeanLab().getUserId());
+        chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
+        chater.setOrder(Constant.Order.ensure_introduce.name());
+        Map<String,Object> map = new HashMap<>();
+        map.put(Constant.Order.introduce.name(),roomNum);
+        chater.setObject(map);
+        mBinder.sendMsg(Json2Chater.chater2Json(chater));
+
     }
 }

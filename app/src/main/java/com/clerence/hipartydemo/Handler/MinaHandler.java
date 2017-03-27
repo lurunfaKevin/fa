@@ -76,6 +76,8 @@ public class MinaHandler extends IoHandlerAdapter {
                             handlerEnsurePunishment(chater, session, msg);
                         }else if (chater.getOrder().equals(Constant.Order.rank.name())){
                             handlerRank(chater, session, msg);
+                        }else if (chater.getOrder().equals(Constant.Order.introduce.name())){
+                            handlerIntroduce(chater,session,msg);
                         }
                         break;
 
@@ -85,6 +87,16 @@ public class MinaHandler extends IoHandlerAdapter {
                         break;
                 }
             }
+        }
+    }
+
+    private void handlerIntroduce(Chater chater, IoSession session, Message msg) {
+        msg.what = Constant.Order.introduce.getIndex();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("chater", chater);
+        msg.obj = bundle;
+        if (mHandler != null) {
+            BeanLab.getBeanLab().getHandler().sendMessage(msg);
         }
     }
 

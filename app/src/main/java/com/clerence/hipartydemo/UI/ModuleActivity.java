@@ -19,13 +19,12 @@ import android.widget.Toast;
 
 import com.clerence.hipartydemo.Bean.BeanLab;
 import com.clerence.hipartydemo.Bean.Chater;
-import com.clerence.hipartydemo.Bean.Constant;
 import com.clerence.hipartydemo.R;
 import com.clerence.hipartydemo.Service.ShiftListener;
 import com.clerence.hipartydemo.Utils.Json2Chater;
 import com.clerence.hipartydemo.Utils.ShifListenerImpl;
 
-import static com.clerence.hipartydemo.Bean.Constant.*;
+import static com.clerence.hipartydemo.Bean.Constant.Order;
 
 
 /**
@@ -98,6 +97,18 @@ public class ModuleActivity extends AppCompatActivity {
             }
         });
 
+        mBtnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Chater chater = new Chater();
+                chater.setUserId(BeanLab.getBeanLab().getUserId());
+                chater.setOrder(Order.introduce.name());
+                chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
+                mBinder.sendMsg(Json2Chater.chater2Json(chater));
+                ModuleActivity.this.finish();
+            }
+        });
+
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -112,5 +123,11 @@ public class ModuleActivity extends AppCompatActivity {
         mBtnGame = (Button) findViewById(R.id.module_bt_game);
         mBtnChat.setBackground(getResources().getDrawable(R.drawable.button));
         mBtnGame.setBackground(getResources().getDrawable(R.drawable.button));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(mServiceConnection);
     }
 }
