@@ -56,8 +56,12 @@ public class MinaHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
         Logger.d(message.toString());
+        String string = message.toString();
+        int i = string.lastIndexOf("}");
+        String request = string.substring(0,i+1);
+        Logger.d(request);
         Message msg = new Message();
-        Chater chater = Json2Chater.json2Chater(message.toString());
+        Chater chater = Json2Chater.json2Chater(request);
         if (chater != null) {
             if (chater.getOrder().equals("talk") || chater.getOrder().equals("talk_in") || chater
                     .equals("talk_out")) {

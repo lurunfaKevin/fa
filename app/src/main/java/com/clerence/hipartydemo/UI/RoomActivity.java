@@ -222,7 +222,7 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
         chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
         chater.setOrder(Constant.Order.ensure_introduce.name());
         Map<String,Object> map = new HashMap<>();
-        map.put(Constant.Order.ensure_introduce.name(),roomNum);
+        map.put("introduction",roomNum);
         chater.setObject(map);
         mBinder.sendMsg(Json2Chater.chater2Json(chater));
 
