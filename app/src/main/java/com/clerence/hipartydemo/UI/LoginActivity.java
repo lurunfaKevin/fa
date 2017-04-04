@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.clerence.hipartydemo.Bean.BeanLab;
@@ -26,6 +27,8 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
+import cn.qqtheme.framework.picker.OptionPicker;
+
 /**
  * LoginActivity     2017-03-19
  * Copyright (c) 2017 Kevin L. All Rights Reserved.
@@ -38,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final String NO_USER = "NO USER";
     private EditText mEditAccount,mEditPsw;
     private BeanLab mBeanLab = BeanLab.getBeanLab();
-
+    private ImageView mImageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnSign.setOnClickListener(this);
         Button btnForpas = (Button) findViewById(R.id.login_bt_forpas);
         btnForpas.setOnClickListener(this);
+        mImageView = (ImageView) findViewById(R.id.login_iv_qq);
+        mImageView.setOnClickListener(this);
     }
 
     @Override
@@ -82,9 +87,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.login_bt_enroll:
                 break;
+            case R.id.login_iv_qq:
+              //  testPicker();
             default:
                 break;
         }
+    }
+
+    private void testPicker() {
+        OptionPicker picker = new OptionPicker(this, new String[]{
+                "第一项", "第二项", "这是一个很长很长很长很长很长很长很长很长很长的很长很长的很长很长的项"
+        });
+        picker.setCycleDisable(false);
+        picker.setLineVisible(false);
+        picker.setShadowVisible(true);
+        picker.setTextSize(11);
+        picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
+            @Override
+            public void onOptionPicked(int index, String item) {
+                Logger.d("index=" + index + ", item=" + item);
+            }
+        });
+        picker.show();
     }
 
     private void login(String account, String psw) {

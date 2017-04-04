@@ -19,5 +19,7 @@
     <color name="colorblue">#62C3FF</color>
     <color name="colorgray">#E6E6E6</color>
     <color name="darkgrey">#FFBFBEBE</color>
+    <color name="immersion">#FF18B4ED</color>
+    <color name="background">#FFFFFFFF</color>
 
 </resources>
