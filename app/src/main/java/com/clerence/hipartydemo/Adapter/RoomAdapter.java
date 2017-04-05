@@ -146,7 +146,7 @@ public class RoomAdapter extends BaseAdapter {
                 tvLeft.setVisibility(View.VISIBLE);
                 Logger.d("msg"+chater.getOrder());
                 Map<String, Object> map = (Map<String, Object>) chater.getObject();
-                String rankMessage = (String) map.get("introduce");//需要确认
+                String rankMessage = (String) map.get("introduction");//需要确认
                 tvLeft.setText(rankMessage);
             }else {
                 midLayout.setVisibility(View.GONE);

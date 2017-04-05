@@ -51,6 +51,7 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
     private MinaService.MinaBinder mBinder;
     private RoomAdapter mRoomAdapter;
     private RoomPopFragment mPopFragment;
+
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -95,9 +96,14 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 Logger.d(chater.getOrder());
                 if (mPopFragment == null) {
+
                     showPop();
                 }
             }else if(msg.what == Constant.Order.ensure_introduce.getIndex()){
+                if (mPopFragment !=null){
+                    mPopFragment.dismiss();
+                    mPopFragment = null;
+                }
                 Bundle bundle = (Bundle) msg.obj;
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 Logger.d(chater.getOrder());
@@ -222,7 +228,7 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
         chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
         chater.setOrder(Constant.Order.ensure_introduce.name());
         Map<String,Object> map = new HashMap<>();
-        map.put(Constant.Order.ensure_introduce.name(),roomNum);
+        map.put("introduction",roomNum);
         chater.setObject(map);
         mBinder.sendMsg(Json2Chater.chater2Json(chater));
 
