@@ -45,6 +45,7 @@
 
         >
         <Button
+            android:id="@+id/warmup_btn1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -53,6 +54,7 @@
             android:textSize="20sp"
             />
         <Button
+            android:id="@+id/warmup_btn2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -61,6 +63,7 @@
             android:textSize="20dp"
             />
         <Button
+            android:id="@+id/warmup_btn3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -69,6 +72,7 @@
             android:textSize="20dp"
             />
         <Button
+            android:id="@+id/warmup_btn4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -77,6 +81,7 @@
             android:textSize="20dp"
             />
         <Button
+            android:id="@+id/warmup_btn5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
