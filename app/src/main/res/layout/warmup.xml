@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:text="二星"
             android:background="@drawable/button"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
         <Button
             android:id="@+id/warmup_btn3"
@@ -69,7 +69,7 @@
             android:layout_weight="1"
             android:background="@drawable/button"
             android:text="三星"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
         <Button
             android:id="@+id/warmup_btn4"
@@ -78,7 +78,7 @@
             android:layout_weight="1"
             android:background="@drawable/button"
             android:text="四星"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
         <Button
             android:id="@+id/warmup_btn5"
@@ -87,7 +87,7 @@
             android:layout_weight="1"
             android:background="@drawable/button"
             android:text="五星"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
     </LinearLayout>
 
