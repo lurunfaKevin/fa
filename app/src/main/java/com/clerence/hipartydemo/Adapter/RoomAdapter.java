@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.clerence.hipartydemo.Bean.BeanLab;
 import com.clerence.hipartydemo.Bean.Chater;
 
+import com.clerence.hipartydemo.Bean.Constant;
 import com.orhanobut.logger.Logger;
 import com.clerence.hipartydemo.R;
 import java.util.List;
@@ -148,6 +149,16 @@ public class RoomAdapter extends BaseAdapter {
                 Map<String, Object> map = (Map<String, Object>) chater.getObject();
                 String rankMessage = (String) map.get("introduction");//需要确认
                 tvLeft.setText(rankMessage);
+            }else if(chater.getOrder().equals(Constant.Order.ensure_warmgame.name())){
+                midLayout.setVisibility(View.GONE);
+                tvUser.setVisibility(View.GONE);
+                tvTime.setVisibility(View.GONE);
+
+                leftLayout.setVisibility(View.VISIBLE);
+                tvLeft.setVisibility(View.VISIBLE);
+                Map<String, Object> map = (Map<String, Object>) chater.getObject();
+                String warmgame = (String) map.get("warmgame");
+                tvLeft.setText(warmgame);
             }else {
                 midLayout.setVisibility(View.GONE);
                 tvUser.setVisibility(View.GONE);

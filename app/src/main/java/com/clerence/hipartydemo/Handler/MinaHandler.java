@@ -84,6 +84,9 @@ public class MinaHandler extends IoHandlerAdapter {
                             handlerIntroduce(chater,session,msg);
                         }else if(chater.getOrder().equals(Constant.Order.ensure_introduce.name())){
                             handlerEnsureIntroduce(chater,session,msg);
+                        }else if (chater.getOrder().equals(Constant.Order.ensure_warmgame.name())){
+                            handlerEnsureWarmgame(chater,session,msg);
+
                         }
                         break;
 
@@ -93,6 +96,16 @@ public class MinaHandler extends IoHandlerAdapter {
                         break;
                 }
             }
+        }
+    }
+
+    private void handlerEnsureWarmgame(Chater chater, IoSession session, Message msg) {
+        msg.what = Constant.Order.ensure_warmgame.getIndex();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("chater", chater);
+        msg.obj = bundle;
+        if (mHandler != null) {
+            BeanLab.getBeanLab().getHandler().sendMessage(msg);
         }
     }
 

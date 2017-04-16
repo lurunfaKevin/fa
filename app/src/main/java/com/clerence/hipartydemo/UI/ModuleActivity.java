@@ -38,6 +38,7 @@ public class ModuleActivity extends AppCompatActivity {
     private MinaService.MinaBinder mBinder;
     private ProgressDialog progressDialog;
     private boolean isBind;
+
     public static void actionStart(Context context){
         Intent intent = new Intent(context,ModuleActivity.class);
         context.startActivity(intent);
@@ -75,8 +76,8 @@ public class ModuleActivity extends AppCompatActivity {
         btnPunish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 PunishActivity.actionStart(ModuleActivity.this);
+                ModuleActivity.this.finish();
             }
         });
         Button btnRank = (Button) findViewById(R.id.module_bt_rank);
@@ -93,6 +94,7 @@ public class ModuleActivity extends AppCompatActivity {
                     chater.setRoomId(roomId);
                     chater.setUserId(BeanLab.getBeanLab().getUserId());
                     mBinder.sendMsg(Json2Chater.chater2Json(chater));
+                    ModuleActivity.this.finish();
                 }
             }
         });
@@ -105,6 +107,13 @@ public class ModuleActivity extends AppCompatActivity {
                 chater.setOrder(Order.introduce.name());
                 chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
                 mBinder.sendMsg(Json2Chater.chater2Json(chater));
+                ModuleActivity.this.finish();
+            }
+        });
+        mBtnGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WarmGameListActivity.actionStart(ModuleActivity.this);
                 ModuleActivity.this.finish();
             }
         });

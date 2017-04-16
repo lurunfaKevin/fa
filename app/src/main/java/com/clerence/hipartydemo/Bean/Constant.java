@@ -6,8 +6,8 @@ package com.clerence.hipartydemo.Bean;
  */
 
 public class Constant {
-    public static final String ADDRESS = "10.128.55.254";
-    public static final int PORT = 9999;
+    public static final String ADDRESS = "10.128.54.224";
+    public static final int PORT = 8999;
     public static final String SUCCEED = "SUCCEED";
     public static final String ROOM_NAME = "roomname";
     public enum Order {
@@ -50,7 +50,8 @@ public class Constant {
 
         talk(9),
         punishment(10),
-        ensure_punishment(11)
+        ensure_punishment(11),
+        ensure_warmgame(12)
         ;
 
         private int index;

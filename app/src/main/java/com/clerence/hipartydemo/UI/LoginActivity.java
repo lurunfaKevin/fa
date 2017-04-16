@@ -1,10 +1,10 @@
 package com.clerence.hipartydemo.UI;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -34,8 +34,8 @@ import cn.qqtheme.framework.picker.OptionPicker;
  * Copyright (c) 2017 Kevin L. All Rights Reserved.
  */
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String URL = "http://"+ Constant.ADDRESS+":8080/app05/user/login";
+public class LoginActivity extends Activity implements View.OnClickListener {
+    private static final String URL = "http://"+ Constant.ADDRESS+":8099/user/login";
     private static final int RESULT_LOGIN = 200;
     private static final String FAIL = "PASSWORD FAILED";
     private static final String NO_USER = "NO USER";
@@ -142,7 +142,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             switch (msg.what){
                 case RESULT_LOGIN:
                     Chater result = Json2Chater.json2Chater((String) msg.obj);
-                    handleResult(result);
+                    if (result!=null){
+                    handleResult(result);}
                     break;
                 default:
                     break;

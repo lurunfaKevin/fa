@@ -12,10 +12,11 @@
         >
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/warmup_inform_iv_counting"
-            android:background="@drawable/warmup_inform_counting"
+            android:id="@+id/warmup_inform_iv_game"
+            android:src="@drawable/warmup_inform_counting"
             />
         <Button
             android:layout_width="50dp"
@@ -34,7 +35,7 @@
         android:background="@color/colorwhite"
         >
         <TextView
-            android:id="@+id/warmup_inform_tv1"
+            android:id="@+id/warmup_inform_tv_game_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="数七"
@@ -42,10 +43,10 @@
             android:textColor="@color/colorblue"
             />
         <TextView
-            android:id="@+id/warmup_inform_tv2"
+            android:id="@+id/warmup_inform_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/warmup_inform_tv1"
+            android:layout_below="@+id/warmup_inform_tv_game_title"
             android:text="难度:一星"
             android:textSize="30sp"
             />

@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.clerence.hipartydemo.Bean.BeanLab;
 import com.clerence.hipartydemo.Bean.Chater;
-import com.clerence.hipartydemo.Bean.Constant;
 import com.clerence.hipartydemo.R;
 import com.clerence.hipartydemo.Service.JoinRoomInterface;
 import com.clerence.hipartydemo.Service.ShiftListener;
@@ -30,7 +29,9 @@ import com.orhanobut.logger.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.clerence.hipartydemo.Bean.Constant.*;
+import static com.clerence.hipartydemo.Bean.Constant.ConnectTypeEnum;
+import static com.clerence.hipartydemo.Bean.Constant.Order;
+import static com.clerence.hipartydemo.Bean.Constant.SUCCEED;
 
 
 public class LobbyActivity extends AppCompatActivity implements JoinRoomInterface {

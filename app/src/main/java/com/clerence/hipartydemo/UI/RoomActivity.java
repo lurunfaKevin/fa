@@ -108,6 +108,10 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 Logger.d(chater.getOrder());
                 mRoomAdapter.addChater(chater);
+            }else if (msg.what == Constant.Order.ensure_warmgame.getIndex()){
+                Bundle bundle = (Bundle) msg.obj;
+                Chater chater = (Chater) bundle.getSerializable("chater");
+                mRoomAdapter.addChater(chater);
             }
         }
     };

@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.clerence.hipartydemo.R;
 import com.orhanobut.logger.Logger;
+import com.squareup.picasso.Picasso;
 
 import cn.qqtheme.framework.picker.OptionPicker;
 
@@ -16,7 +18,7 @@ import cn.qqtheme.framework.picker.OptionPicker;
  */
 
 public class AndroidPickerTestActivity extends Activity{
-
+    private ImageView mImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,15 @@ public class AndroidPickerTestActivity extends Activity{
             @Override
             public void onClick(View v) {
                 Logger.d(picker.getSelectedIndex());
+            }
+        });
+        mImageView = (ImageView) findViewById(R.id.image_download);
+        findViewById(R.id.download_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Picasso.with(AndroidPickerTestActivity.this).load("http://10.110.210.129:8080/user/download?url=/Users/lurunfa/Desktop/plane.png")
+                        .into(mImageView);
+
             }
         });
     }
