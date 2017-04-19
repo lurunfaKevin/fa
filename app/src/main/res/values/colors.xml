@@ -21,5 +21,7 @@
     <color name="darkgrey">#FFBFBEBE</color>
     <color name="immersion">#FF18B4ED</color>
     <color name="background">#FFFFFFFF</color>
+    <color name="purple2">#cc99cc</color>
+    <color name="pink2">#ff99ff</color>
 
 </resources>
