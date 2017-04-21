@@ -17,8 +17,8 @@ public class TestActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test222);
-        TextView tv = (TextView) findViewById(R.id.test222_tv);
-        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
+        setContentView(R.layout.room1);
+//        TextView tv = (TextView) findViewById(R.id.test222_tv);
+//        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 }
