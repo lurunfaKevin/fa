@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Hiparty</string>
+    <string name="game1_introduce">规则:</string>
+    <string name="game1_name">狼人杀</string>
+    <string name="game2_introduce">规则:</string>
+    <string name="game2_name">你来比划我来猜</string>
 </resources>

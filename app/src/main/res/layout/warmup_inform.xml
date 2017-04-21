@@ -5,50 +5,44 @@
     android:layout_height="match_parent"
     android:background="@color/colorgray"
     >
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1.5"
+        android:orientation="horizontal"
+
         >
 
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
             android:id="@+id/warmup_inform_iv_game"
-            />
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/warmup_inform_back"
-            android:id="@+id/warmup_inform_btn_back"
-            />
-    </RelativeLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/warmup_inform_counting" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorwhite"
-        >
+        android:background="@color/colorwhite">
+
         <TextView
+            android:paddingLeft="5dp"
             android:id="@+id/warmup_inform_tv_game_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="数七"
-            android:textSize="40sp"
+            android:text="数七:"
             android:textColor="@color/colorblue"
-            />
-        <TextView
-            android:id="@+id/warmup_inform_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingLeft="5dp"
             android:layout_below="@+id/warmup_inform_tv_game_title"
-            android:text="难度:一星"
-            android:textSize="30sp"
+            android:src="@drawable/lv_warmup_favor_fill"
             />
 
     </RelativeLayout>
@@ -58,14 +52,15 @@
         android:background="@color/colorwhite"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.5"
+        android:layout_weight="4"
         >
         <TextView
+            android:paddingLeft="5dp"
             android:id="@+id/warmup_inform_tv_introduction"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="游戏规则：任意一人开始数数，从1开始，1、2、3..依次数数，每逢7的倍数(7,14,21...)和含有7的数字(7，17..)必须以敲桌子来代替。若不如此做，则接受惩罚"
-            android:textSize="25sp"
+            android:textSize="20sp"
             />
 
     </LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/colorgray">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/game_pic"
+        android:layout_height="235dp"
+        android:src="@drawable/game1"
+        />
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_below="@+id/game_pic"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@color/colorwhite"
+        android:text="@string/game1_name"
+        android:paddingLeft="5dp"
+        android:textSize="30sp"
+        android:textColor="@color/colorblue"
+        />
+
+    <TextView
+        android:id="@+id/game_introduce"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/game_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorwhite"
+        android:scrollbars="vertical"
+        android:text="@string/game1_introduce"
+        android:textSize="22sp"
+        />
+
+</RelativeLayout>
