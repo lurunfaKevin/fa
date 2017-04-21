@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:background="@color/white">
         <Button
-            android:id="@+id/gametype_bt_return"
+            android:id="@+id/ganmetype_back_btn"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/gametype_ar"
@@ -50,7 +50,7 @@
         />
 
         <Button
-            android:id="@+id/gametype_bt_rolegame"
+            android:id="@+id/gametype_zy_btn"
             android:layout_width="match_parent"
             android:layout_height="144dp"
             android:background="@drawable/gametype_prologue" />
@@ -71,7 +71,7 @@
         android:weightSum="1">
 
         <Button
-            android:id="@+id/gametype_bt_warm"
+            android:id="@+id/gametype_nc_btn"
             android:layout_width="139dp"
             android:layout_height="150dp"
             android:background="@drawable/gametype_selfintro" />

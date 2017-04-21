@@ -12,11 +12,11 @@
         >
 
         <ImageView
-            android:layout_centerHorizontal="true"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
             android:id="@+id/warmup_inform_iv_game"
-            android:src="@drawable/warmup_inform_counting"
             />
         <Button
             android:layout_width="50dp"

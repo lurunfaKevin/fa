@@ -57,8 +57,10 @@
 
         <ImageView
             android:id="@+id/lv_warmup_iv_counting"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/warmup_inform_counting" />
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+             />
     </LinearLayout>
 </LinearLayout>
