@@ -10,6 +10,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -32,7 +34,6 @@ import com.clerence.hipartydemo.Utils.Json2Chater;
 import com.clerence.hipartydemo.Utils.ShifListenerImpl;
 import com.orhanobut.logger.Logger;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,7 +97,6 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 Logger.d(chater.getOrder());
                 if (mPopFragment == null) {
-
                     showPop();
                 }
             }else if(msg.what == Constant.Order.ensure_introduce.getIndex()){
@@ -118,7 +118,13 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
 
     private void showPop() {
         mPopFragment = new RoomPopFragment();
-        mPopFragment.show(getSupportFragmentManager(), "room");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(mPopFragment,"room");
+        ft.commitAllowingStateLoss();
+
+
+
     }
 
     @Override
@@ -205,7 +211,8 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BeanLab.getBeanLab().setChaters(new ArrayList<Chater>());
+        unbindService(mServiceConnection);
+       // BeanLab.getBeanLab().setChaters(new ArrayList<Chater>());
     }
 
     private void initShiftButton() {
@@ -237,4 +244,12 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
         mBinder.sendMsg(Json2Chater.chater2Json(chater));
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Logger.d("activity restart");
+    }
+
+
 }

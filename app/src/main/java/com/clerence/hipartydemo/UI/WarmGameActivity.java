@@ -36,6 +36,7 @@ import java.util.Map;
 
 public class WarmGameActivity extends AppCompatActivity {
 
+    private Boolean isBack = false;
     private WarmGame mWarmGame;
     private ImageView mImageView;
     private TextView mNameTextView,mLevelTextView,mGameTextView;
@@ -149,12 +150,14 @@ public class WarmGameActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         unbindService(mServiceConnection);
+        isBack = true;
         this.finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(mServiceConnection);
+        if (!isBack){
+        unbindService(mServiceConnection);}
     }
 }

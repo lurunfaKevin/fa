@@ -71,7 +71,7 @@ public class WarmupAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
        if (convertView == null){
-           convertView = mInflater.inflate(R.layout.lv_warmup, parent, false);
+           convertView = mInflater.inflate(R.layout.lv_warmup,parent,false);
            convertView.setTag(new ViewHolder(convertView));
        }
         ViewHolder viewHolder = (ViewHolder) convertView.getTag();

@@ -39,7 +39,7 @@ public class RoomAdapter extends BaseAdapter {
         if (chater != null) {
             Logger.d("add");
             Logger.d(chater.toString());
-            mDatas.add(chater);
+            BeanLab.getBeanLab().getChaters().add(chater);
             notifyDataSetChanged();
         }
     }
