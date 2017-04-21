@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Hiparty.iml" filepath="$PROJECT_DIR$/Hiparty.iml" />
       <module fileurl="file://$PROJECT_DIR$/HipartyDemo.iml" filepath="$PROJECT_DIR$/HipartyDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hiparty.iml" filepath="$PROJECT_DIR$/hiparty.iml" />
     </modules>
   </component>
 </project>

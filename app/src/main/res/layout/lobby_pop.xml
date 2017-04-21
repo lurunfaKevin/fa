@@ -2,7 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/pale_pink"
+        android:text="请输入想创建的房间号"
+        android:textSize="20dp"
+        android:textColor="@color/purple2"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
