@@ -29,10 +29,11 @@
                 android:layout_alignParentLeft="true"
                 android:gravity="center"
                 android:paddingLeft="10dp"
-                android:text="xx"
+                android:text="no.1718"
                 android:textColor="@color/white"
-                android:textSize="30dp"
+                android:textSize="15sp"
                 />
+            <!--这个暂时不用-->
             <Button
                 android:id="@+id/room_bt_add"
                 android:layout_width="45dp"
@@ -40,27 +41,56 @@
                 android:layout_alignParentRight="true"
                 android:background="@drawable/room_add" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                >
+                <TextView
+                    android:id="@+id/room_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="益友社团"
+                    android:textColor="@color/white"
+                    android:textSize="30dp" />
+                <TextView
+                    android:id="@+id/room_tv_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="(x人)"
+                    android:textColor="@color/white"
+                    android:textSize="30dp" />
+            </LinearLayout>
+        </RelativeLayout>
+        <FrameLayout
+            android:id="@+id/room_framTip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/room_framTop"
+            android:visibility="gone">
             <TextView
-                android:id="@+id/room_tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/room_tv_tip"
+                android:text="请加入房间"
                 android:gravity="center"
-                android:text="益友社团(x人)"
-                android:textColor="@color/white"
-                android:textSize="30dp" />
-
-        </RelativeLayout>
-
+                android:textSize="32sp"/>
+        </FrameLayout>
         <ListView
-            android:id="@+id/room_lv_dialog"
+            android:id="@+id/room_lv_dialog1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/room_framTop"
-            >
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_above="@+id/room_frameBottom">
 
         </ListView>
 
         <LinearLayout
+            android:id="@+id/room_frameBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

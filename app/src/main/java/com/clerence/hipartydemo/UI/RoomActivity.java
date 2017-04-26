@@ -48,6 +48,8 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
     private EditText mEditInput;
     private Button mBtnSend;
     private TextView mTVRoomName;
+    private TextView mTVRoomId;
+    private TextView mTVRoomNum;
     private ListView mListView;
     private MinaService.MinaBinder mBinder;
     private RoomAdapter mRoomAdapter;
@@ -112,6 +114,9 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
                 Bundle bundle = (Bundle) msg.obj;
                 Chater chater = (Chater) bundle.getSerializable("chater");
                 mRoomAdapter.addChater(chater);
+            }else if(msg.what == 99){
+                BeanLab.getBeanLab().setRoomMenberNum(BeanLab.getBeanLab().getRoomMenberNum()+1);
+                mTVRoomNum.setText("("+BeanLab.getBeanLab().getRoomMenberNum()+"人)");
             }
         }
     };
@@ -130,7 +135,7 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.room);
+        setContentView(R.layout.room1);
         initShiftButton();
         init();
         Intent intent = new Intent(this, MinaService.class);
@@ -151,11 +156,14 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
 //                tv.setText("网络异常，请重新加入房间");
 //            } else {
             findViewById(R.id.room_framTip).setVisibility(View.GONE);
-            findViewById(R.id.room_lv_dialog).setVisibility(View.VISIBLE);
+            findViewById(R.id.room_lv_dialog1).setVisibility(View.VISIBLE);
             findViewById(R.id.room_frameBottom).setVisibility(View.VISIBLE);
             String roomName = (String) BeanLab.getBeanLab().getFromMap("roomName");
             String roomId = (String) BeanLab.getBeanLab().getFromMap("roomId");
-            mTVRoomName.setText(roomName + "(" + roomId + ")");
+            mTVRoomName.setText(roomName);
+            BeanLab.getBeanLab().setRoomMenberNum(1);
+            mTVRoomNum.setText("(" + 1 + "人)");
+            mTVRoomId.setText("No."+roomId);
             initSend();
             //}
         }
@@ -185,10 +193,14 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
     }
 
     private void init() {
-        mTVRoomName = (TextView) findViewById(R.id.room_tv_room_name);
+        mTVRoomName = (TextView) findViewById(R.id.room_tv_name);
         mTVRoomName.setText("");
-        mListView = (ListView) findViewById(R.id.room_lv_dialog);
-        mRoomAdapter = new RoomAdapter(this);
+        mTVRoomId = (TextView) findViewById(R.id.room_tv_id);
+        mTVRoomId.setText("");
+        mTVRoomNum = (TextView) findViewById(R.id.room_tv_num);
+        mTVRoomNum.setText("");
+        mListView = (ListView) findViewById(R.id.room_lv_dialog1);
+        mRoomAdapter = new RoomAdapter(this,mHandler);
         mListView.setAdapter(mRoomAdapter);
 
     }
@@ -226,20 +238,21 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
     }
 
     @Override
-    public void onFinish(String roomNum) {
-        if (TextUtils.isEmpty(roomNum)){
+    public void onFinish(String introduce) {
+        if (TextUtils.isEmpty(introduce)){
             Toast.makeText(RoomActivity.this,"自我介绍内容为空",Toast.LENGTH_SHORT).show();
             return;
         }
         if (mPopFragment!=null){
             mPopFragment = null;
         }
+        BeanLab.getBeanLab().setUserName(introduce);
         Chater chater = new Chater();
         chater.setUserId(BeanLab.getBeanLab().getUserId());
         chater.setRoomId(BeanLab.getBeanLab().getFromMap("roomId").toString());
         chater.setOrder(Constant.Order.ensure_introduce.name());
         Map<String,Object> map = new HashMap<>();
-        map.put("introduction",roomNum);
+        map.put("introduction",introduce);
         chater.setObject(map);
         mBinder.sendMsg(Json2Chater.chater2Json(chater));
 
@@ -250,6 +263,8 @@ public class RoomActivity extends AppCompatActivity implements JoinRoomInterface
         super.onRestart();
         Logger.d("activity restart");
     }
+
+
 
 
 }

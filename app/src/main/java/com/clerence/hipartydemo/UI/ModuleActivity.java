@@ -60,6 +60,7 @@ public class ModuleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module);
+        findViewById(R.id.module_bg).setBackground(getResources().getDrawable(R.drawable.module_bg));
         Intent intent = new Intent(this,MinaService.class);
         startService(intent);
         bindService(intent,mServiceConnection,BIND_AUTO_CREATE);
@@ -113,7 +114,7 @@ public class ModuleActivity extends AppCompatActivity {
         mBtnGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WarmGameListActivity.actionStart(ModuleActivity.this);
+                GameTypeActivity.actionStart(ModuleActivity.this);
                 ModuleActivity.this.finish();
             }
         });

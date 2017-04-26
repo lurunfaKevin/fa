@@ -37,13 +37,19 @@
             android:textColor="@color/colorblue"
             android:textSize="30sp" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:paddingLeft="5dp"
+        <!--<ImageView-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:paddingLeft="5dp"-->
+            <!--android:layout_below="@+id/warmup_inform_tv_game_title"-->
+            <!--android:src="@drawable/lv_warmup_favor_fill"-->
+            <!--/>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/warmup_inform_level"
             android:layout_below="@+id/warmup_inform_tv_game_title"
-            android:src="@drawable/lv_warmup_favor_fill"
-            />
+        />
 
     </RelativeLayout>
 

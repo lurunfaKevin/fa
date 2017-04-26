@@ -43,7 +43,7 @@ import java.util.Map;
 
 public class WarmGameListActivity extends Activity implements View.OnClickListener{
 
-    private static final String URL = "http://"+ Constant.ADDRESS+":8099/user/warmgame";
+    private static final String URL = "http://"+ Constant.ADDRESS+":8099/room/warmgame";
     private static final int GET_WARM_DATA = 1;
     private Button mBtn1, mBtn2, mBtn3, mBtn4, mBtn5;
     private ListView mListView;

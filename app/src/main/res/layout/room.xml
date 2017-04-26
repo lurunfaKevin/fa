@@ -40,20 +40,7 @@
 
         </RelativeLayout>
 
-        <FrameLayout
-            android:id="@+id/room_framTip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/room_framTop"
-            android:visibility="gone">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/room_tv_tip"
-                android:text="请加入房间"
-                android:gravity="center"
-                android:textSize="32sp"/>
-        </FrameLayout>
+
         <ListView
             android:id="@+id/room_lv_dialog"
             android:layout_width="match_parent"
@@ -65,7 +52,6 @@
         </ListView>
 
         <LinearLayout
-            android:id="@+id/room_frameBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -23,6 +23,7 @@ import org.apache.mina.core.session.IoSession;
 
 public class MinaHandler extends IoHandlerAdapter {
     private final static String TAG = "MinaHandler";
+
     private Handler mHandler;
 
     public void setHandler(Handler handler) {

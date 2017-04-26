@@ -14,7 +14,9 @@ import java.util.Map;
  */
 
 public class BeanLab {
+    private int roomMenberNum;
     private String userId;
+    private String userName;
     private volatile static BeanLab sBeanLab;
     private BeanLab(){}
     private Map<String,Object> saveMap = new HashMap<>();
@@ -23,6 +25,14 @@ public class BeanLab {
     private Constant.ConnectTypeEnum mConnectTypeEnum;
     private Handler mHandler;
     private List<Chater> mChaters = new ArrayList<>();
+
+    public int getRoomMenberNum() {
+        return roomMenberNum;
+    }
+
+    public void setRoomMenberNum(int roomMenberNum) {
+        this.roomMenberNum = roomMenberNum;
+    }
 
     public static BeanLab getBeanLab(){
         if (sBeanLab == null){
@@ -91,5 +101,13 @@ public class BeanLab {
 
     public void setChaters(List<Chater> chaters) {
         mChaters = chaters;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
