@@ -48,7 +48,8 @@ public class GameTypeActivity extends Activity {
         findViewById(R.id.gametype_zy_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                GameActivity.actionStart(GameTypeActivity.this);
+                GameTypeActivity.this.finish();
             }
         });
 

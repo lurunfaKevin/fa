@@ -2,10 +2,9 @@ package com.clerence.hipartydemo.UI.testUI;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
-import android.widget.TextView;
 
 import com.clerence.hipartydemo.R;
+import com.panxw.android.imageindicator.ImageIndicatorView;
 
 /**
  * TestActivity     2017-04-21
@@ -14,11 +13,24 @@ import com.clerence.hipartydemo.R;
 
 public class TestActivity extends Activity {
 
+    private ImageIndicatorView imageIndicatorView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.room1);
-//        TextView tv = (TextView) findViewById(R.id.test222_tv);
-//        tv.setMovementMethod(ScrollingMovementMethod.getInstance());
+        setContentView(R.layout.lv_warmup);
+//        final TextView tv = (TextView) findViewById(R.id.test_tv);
+//        imageIndicatorView = (ImageIndicatorView) findViewById(R.id.imageIndi);
+//        final Integer[] resArray = new Integer[] { R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+//        imageIndicatorView.setupLayoutByDrawable(resArray);
+//        imageIndicatorView.setIndicateStyle(ImageIndicatorView.INDICATE_ARROW_ROUND_STYLE);
+//        imageIndicatorView.show();
+//        imageIndicatorView.setOnItemChangeListener(new ImageIndicatorView.OnItemChangeListener() {
+//            @Override
+//            public void onPosition(int position, int totalCount) {
+//                Logger.d(position);
+//                tv.setText(position+"nihao");
+//            }
+//        });
     }
 }

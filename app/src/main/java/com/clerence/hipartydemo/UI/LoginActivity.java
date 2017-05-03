@@ -35,7 +35,7 @@ import cn.qqtheme.framework.picker.OptionPicker;
  */
 
 public class LoginActivity extends Activity implements View.OnClickListener {
-    private static final String URL = "http://"+ Constant.ADDRESS+":8099/user/login";
+    private static final String URL = Constant.HTTPCONTEXT+"/user/login";
     private static final int RESULT_LOGIN = 200;
     private static final String FAIL = "PASSWORD FAILED";
     private static final String NO_USER = "NO USER";
@@ -123,6 +123,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
+                Logger.d(e.getMessage());
                 Logger.e("出问题",e);
             }
 

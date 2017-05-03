@@ -6,9 +6,12 @@ package com.clerence.hipartydemo.Bean;
  */
 
 public class Constant {
-    //public static final String ADDRESS = "10.110.210.210";
-    public static final String ADDRESS = "192.168.43.169";
-    public static final int PORT = 8999;
+    //public static final String ADDRESS = "10.128.240.213";
+
+   public static final String ADDRESS = "192.168.43.169";
+    public static final int PORT = 8099;
+    public static final int MINA_PORT = 8999;
+    public static final String HTTPCONTEXT = "http://"+ADDRESS+":"+PORT+"/";
     public static final String SUCCEED = "SUCCEED";
     public static final String ROOM_NAME = "roomname";
     public enum Order {
