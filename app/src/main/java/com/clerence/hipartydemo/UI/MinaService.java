@@ -41,7 +41,7 @@ public class MinaService extends Service {
         super.onCreate();
         Log.d(TAG, "onCreate");
         mMinaHandler = new MinaHandler();
-        mMinaBinder.startConnect(Constant.ADDRESS,Constant.PORT,new Handler());
+        mMinaBinder.startConnect(Constant.ADDRESS,Constant.MINA_PORT,new Handler());
     }
 
 

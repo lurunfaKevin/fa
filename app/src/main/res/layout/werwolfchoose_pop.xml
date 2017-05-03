@@ -14,7 +14,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_marginLeft="37dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingBottom="10dp">

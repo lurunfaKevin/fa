@@ -90,7 +90,7 @@
                     android:text="普通村民"
                     android:textSize="20dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/werwolfchoose_tv_normal"
                     android:layout_width="70dp"
                     android:layout_height="30dp"
